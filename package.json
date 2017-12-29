@@ -1,0 +1,16 @@
+{
+  "name": "webgl_sketchpad",
+  "version": "1.0.0",
+  "main": "index.js",
+  "license": "MIT",
+  "scripts": {
+    "start": "parcel index.html"
+  },
+  "dependencies": {
+    "@types/gl-matrix": "^2.4.0",
+    "gl-matrix": "^2.4.0"
+  },
+  "devDependencies": {
+    "typescript": "^2.6.2"
+  }
+}
