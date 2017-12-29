@@ -30,10 +30,12 @@ class BrushStroke {
     let x = e.clientX;
     let y = e.clientY;
     const rect = this.canvas.getBoundingClientRect();
-    x = ((x - rect.left) - this.canvas.height / 2) / (this.canvas.height / 2);
-    y = (this.canvas.width / 2 - (y - rect.top)) / (this.canvas.width / 2);
+    x = ((x - rect.left) - rect.height / 2) / (rect.height / 2);
+    y = (rect.width / 2 - (y - rect.top)) / (rect.width / 2);
     const position = [x, y, 0.0];
-    this.destination.update(position, this.color);
+    if (!this.locked) {
+      this.destination.update(position, this.color);
+    }
     document.addEventListener('mouseup', this.documentMouseUpEvent);
   }
 

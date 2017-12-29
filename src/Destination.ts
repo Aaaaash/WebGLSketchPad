@@ -30,13 +30,13 @@ class Destination {
     this.shaderProgram = initShaders(gl, this.VSHADER_SOURCE, this.FSHADER_SOURCE);
   }
 
-  public update(position: Array<number>, color: Float32Array) {
+  public update(position: Array<number>, color: Float32Array): void {
     this.positions = this.positions.concat(position);
     this.color = color;
     this.draw();
   }
 
-  private draw() {
+  private draw(): void {
     const length = this.positions.length;
     this.gl.clearColor(0.0,0.0,0.0,1.0);
     this.gl.clear(this.gl.COLOR_BUFFER_BIT);
