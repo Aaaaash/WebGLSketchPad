@@ -25,3 +25,35 @@ export function resize(canvas: HTMLCanvasElement) {
     canvas.height = displayHeight;
   }
 }
+
+export function initShaders(gl: WebGLRenderingContext, vshader: string, fshader: string): WebGLProgram {
+  const program = createProgram(gl, vshader, fshader);
+
+  gl.useProgram(program);
+
+  return program;
+}
+
+export function createProgram(gl: WebGLRenderingContext, vshader: string, fshader: string): WebGLProgram {
+  const vertexShader = loadShader(gl, gl.VERTEX_SHADER, vshader);
+  const fragmentShader = loadShader(gl, gl.FRAGMENT_SHADER, fshader);
+
+  const program = gl.createProgram();
+
+  gl.attachShader(program, vertexShader);
+  gl.attachShader(program, fragmentShader);
+
+  gl.linkProgram(program);
+
+  return (program as WebGLProgram);
+}
+
+export function loadShader(gl: WebGLRenderingContext, type: number, source: string): WebGLShader {
+  const shader = gl.createShader(type);
+
+  gl.shaderSource(shader, source);
+
+  gl.compileShader(shader);
+
+  return (shader as WebGLShader);
+}
